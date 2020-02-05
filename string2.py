@@ -18,8 +18,12 @@
 
 
 def verbing(s):
-    """Your code goes here.  Edit this docstring."""
-    return
+    if (len(s) >= 3 and s[-3:] == 'ing'):
+        return s + 'ly'
+    elif (len(s) >= 3):
+        return s + 'ing'
+    else:
+        return s
 
 
 # E. not_bad
@@ -30,9 +34,12 @@ def verbing(s):
 # Return the resulting string.
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
-def not_bad(s):
-    """Your code goes here.  Edit this docstring."""
-    return
+def not_bad(s): 
+    if s.find('bad') > s.find('not'):
+        s1 = s.replace(s[s.find('not'):(s.find('bad') + 3)], 'good')
+        return s1
+    else:
+        return s
 
 
 # F. front_back
@@ -43,8 +50,14 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-    """Your code goes here.  Edit this docstring."""
-    return
+    if (len(a) % 2 == 0 and len(b) % 2 == 0):
+        return a[:len(a)//2] + b[:len(b)//2] + a[len(a)//2:] + b[len(b)//2:]
+    elif(len(a) % 2 == 0 and len(b) % 2 == 1):
+        return a[:len(a)//2] + b[:len(b)//2 + 1] + a[len(a)//2:] + b[len(b)//2 + 1: ]
+    elif(len(a) % 2 == 1 and len(b) % 2 == 0):
+        return a[:len(a)//2 + 1] + b[:len(b)//2] + a[len(a)//2 + 1:] + b[len(b)//2:]
+    else:
+        return a[:len(a)//2 + 1] + b[:len(b)//2 + 1] + a[len(a)//2 + 1:] + b[len(b)//2 + 1:]
 
 
 # Provided simple test() function used in main() to print
